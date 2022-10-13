@@ -1,7 +1,18 @@
 PImage testImage;
 Button renewableButton;
-Button fossilButton; 
+Button fossilButton;
+Button resetButton;
 PImage testImage2;
+
+FossilBackground fossilBackground; 
+//PImage[] fossilBackgrounds = new PImage[2];
+//PImage[] renewableBackgrounds = new PImage[2];
+
+boolean rewnewableButtonPressed = false;
+boolean fossilButtonPressed = false;
+boolean rewnewableAfterfossil = false; // if renewable is pressed AFTER fossil then there is a message.
+
+boolean reset = false; 
 
 
 void setup() {
@@ -10,22 +21,26 @@ void setup() {
   testImage2 = loadImage("Assets/test2.png");
   renewableButton = new Button(200, 600, 100, 100, testImage, testImage2, "renewableButton");
   fossilButton = new Button(1400, 600, 100, 100, testImage2, testImage, "fossilButton");
-  
+  resetButton = new Button(1000, 600, 100, 100, testImage2, testImage, "resetButton");
+  fossilBackground = new FossilBackground();
 }
 
 
 void draw() {
   renewableButton.update();
   renewableButton.render();
-  //renewableButton.hover();
-  
   fossilButton.update();
   fossilButton.render();
-}
+  
+  
+  // if renewableButton is clicked then showcase the proper array
+  if (renewableButton.isClicked()) {
+    println("R BUTTON CLICKED");
+    rewnewableButtonPressed = true;
+  }
 
-
-
-//class to store all Fossil fuels
-
-class FossilButton {
+  if (fossilButton.isClicked()) {
+    println("F BUTTON CLICKED");
+    fossilBackground.display();
+  }
 }
