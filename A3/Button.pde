@@ -1,5 +1,3 @@
-//class to store all Renewable BUTTON stuff
-
 class Button {
   float xPos;
   float yPos;
@@ -45,7 +43,7 @@ class Button {
 
   //render button to show up on screen
   void render() {
-    imageMode(CENTER);
+    //imageMode(CENTER);
     image(mainImage, xPos, yPos, _width, _height); //(image file name, x coordinate, y coordinate, width, height)
   }
 
