@@ -33,6 +33,7 @@ class FossilBackground {
       backgrounds[i] = loadImage("Assets/image" + nf(i) + ".png");
     }
   }
+  /////
 
 
 
