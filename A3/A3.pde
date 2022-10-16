@@ -68,6 +68,9 @@ void draw() {
   fossilButton.render();
   
   pushMatrix();
+  rotate(radians(-25));
+  image(sky1, posX[0], -1500);
+  image(sky2, posX[1], -1500);
   for (int i = 0; i < 2; i++) {
     if (posX[i] > -1600) {
       posX[i] -= 1;
