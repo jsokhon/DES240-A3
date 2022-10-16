@@ -6,10 +6,14 @@ PImage fossilClicked;
 
 PImage offBackground;
 PImage onBackground;
+PImage sky1;
+PImage sky2;
+
 Button renewableButton;
 Button fossilButton;
 Button resetButton;
 
+float posX[] = new float[2];
 
 boolean rewnewableButtonPressed = false;
 boolean fossilButtonPressed = false;
@@ -29,6 +33,9 @@ RenewableBackground renewableBackground;
 
 void setup() {
   size(1600, 800);
+  sky1 = loadImage("Assets/sky1.png");
+  sky2 = loadImage("Assets/sky2.png");
+  
   offBackground = loadImage("Assets/image0.png");
   renewableNotClicked = loadImage("Assets/rbutton1.png");
   renewableClicked = loadImage("Assets/rbutton2.png");
@@ -39,12 +46,15 @@ void setup() {
   fossilClicked = loadImage("Assets/fbutton2.png");
 
   renewableButton = new Button(100, 400, 400, 400, renewableNotClicked, renewableClicked, "renewableButton");
-  fossilButton = new Button(1200, 400, 400, 400, fossilNotClicked, fossilClicked, "fossilButton");
+  fossilButton = new Button(1100, 400, 400, 400, fossilNotClicked, fossilClicked, "fossilButton");
   //resetButton = new Button(1000, 600, 100, 100, renewableNotClicked,renewableClicked, "resetButton");
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
 
   frameRate(frame_rate);
+  
+  posX[0] = -800;
+  posX[1] = 800;
 }
 
 
@@ -56,8 +66,17 @@ void draw() {
   renewableButton.render();
   fossilButton.update();
   fossilButton.render();
-
-
+  
+  pushMatrix();
+  for (int i = 0; i < 2; i++) {
+    if (posX[i] > -1600) {
+      posX[i] -= 1;
+    } else {
+      posX[i] = 1600;
+    }
+  }
+  popMatrix();
+  
   // if renewableButton is clicked then showcase the proper array
 
   if (mousePressed && renewableButton.isClicked()) {

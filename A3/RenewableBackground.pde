@@ -30,12 +30,13 @@ class RenewableBackground {
 
 
 
-
+ 
     for (int i = 0; i < numOfFrames; i++) {
       println("image" + i);
       backgrounds[i] = loadImage("Assets/renewablebg" + nf(i) + ".png");
     }
   }
+
   /////
 
 
