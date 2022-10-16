@@ -87,6 +87,7 @@ void draw() {
     rewnewableButtonPressed = true;
   } else {
     if (rewnewableButtonPressed) {
+      renewableButton.setClicked();
       renewableButton.buttonNotClickedRender();
     }
   }
@@ -98,6 +99,8 @@ void draw() {
     fossilButtonPressed = true;
   } else {
     if (fossilButtonPressed) {
+      
+      fossilButton.setClicked();
       fossilButton.buttonNotClickedRender();
     }
   }

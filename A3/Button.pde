@@ -52,8 +52,8 @@ class Button {
       image(notClickedImg, xPos, yPos, _width, _height); //(image file name, x coordinate, y coordinate, width, height)
     }
   }
-  
-  void buttonNotClickedRender(){
+
+  void buttonNotClickedRender() {
     image(notClickedImg, xPos, yPos, _width, _height);
   }
 
@@ -61,16 +61,13 @@ class Button {
     return clicked;
   }
 
-  // if mouse is over this button then it'll change colour
-  boolean overButton() {
-    if (mouseX >= xPos && mouseX <= xPos + _width && mouseY >= yPos && mouseY <= yPos + _height) {
-      return true;
-    } else {
-      return false;
+
+  void setClicked() {
+    if (pressed) {
+      pressed = false;
+      clicked = false;
     }
   }
 
-  void display() {
-  }
-
+  
 }
