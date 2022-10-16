@@ -45,8 +45,8 @@ void setup() {
   fossilNotClicked = loadImage("Assets/fbutton1.png");
   fossilClicked = loadImage("Assets/fbutton2.png");
 
-  renewableButton = new Button(100, 400, 400, 400, renewableNotClicked, renewableClicked, "renewableButton");
-  fossilButton = new Button(1100, 400, 400, 400, fossilNotClicked, fossilClicked, "fossilButton");
+  renewableButton = new Button(100, 500, 250, 250, renewableNotClicked, renewableClicked, "renewableButton");
+  fossilButton = new Button(1250, 500, 250, 250, fossilNotClicked, fossilClicked, "fossilButton");
   //resetButton = new Button(1000, 600, 100, 100, renewableNotClicked,renewableClicked, "resetButton");
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
