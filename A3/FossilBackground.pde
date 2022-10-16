@@ -7,6 +7,9 @@ class FossilBackground {
   PImage[] backgrounds;
   boolean finsihed = false;
 
+  int imageCount;
+  int frame;
+
 
   float posX [] = new float[2];
 
@@ -16,6 +19,8 @@ class FossilBackground {
   //PImage image1;
 
   FossilBackground(int frameNum) {
+
+    imageCount = frameNum;
     numOfFrames = frameNum;
     backgrounds = new PImage[numOfFrames];
 
@@ -39,7 +44,19 @@ class FossilBackground {
 
 
   // if some boolean is true, then play an animation for x seconds
+
   void display() {
+    if (fossilButton.isClicked()) {
+      pushMatrix();
+      frame = (frame+1) % imageCount;
+      println("FRAME", frame);
+      //imageMode(CENTER);
+      image(backgrounds[frame], 0, 0);
+      popMatrix();
+    }
+  }
+
+  void c() {
     println("FOSSIL BG DISPLAY");
     if (!finished) {
       pushMatrix();
@@ -47,10 +64,12 @@ class FossilBackground {
       popMatrix();
 
 
-      for (int x = -100; x < width; x += backgrounds[0].width) {
-        image(backgrounds[(currentFrame+offset) % numOfFrames], x, -20);
+      for (int x = 0; x < width; x += backgrounds[0].width) {
+        //image(backgrounds[(currentFrame+offset) % numOfFrames], x, -20);
+        image(backgrounds[(currentFrame) % numOfFrames], x, -20);
         offset+=2;
-        image(backgrounds[(currentFrame+offset) % numOfFrames], x, height/2);
+        image(backgrounds[(currentFrame) % numOfFrames], x, height/2);
+        //image(backgrounds[(currentFrame+offset) % numOfFrames], x, height/2);
         offset+=2;
       }
 

@@ -13,13 +13,12 @@ class Button {
   String text;
 
 
-  Button(float x, float y, float w, float h, PImage i1, PImage i2, String txt) {
+  Button(float x, float y, float w, float h, PImage i1, String txt) {
     xPos = x;
     yPos = y;
     _width = w;
     _height = h;
     image1 = i1;
-    image2 = i2;
     mainImage = i1;
     text = txt;
   }
