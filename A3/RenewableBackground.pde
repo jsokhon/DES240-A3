@@ -32,7 +32,7 @@ class RenewableBackground {
 
  
     for (int i = 0; i < numOfFrames; i++) {
-      println("image" + i);
+      //println("image" + i);
       backgrounds[i] = loadImage("Assets/renewablebg" + nf(i) + ".png");
     }
   }
@@ -48,7 +48,7 @@ class RenewableBackground {
     if (renewableButton.isClicked()) {
       pushMatrix();
       frame = (frame+1) % imageCount;
-      println("FRAME", frame);
+      //println("FRAME", frame);
       //imageMode(CENTER);
       image(backgrounds[frame], 0, 0);
       popMatrix();
