@@ -1,8 +1,14 @@
-PImage testImage;
+PImage renewableNotClicked;
+PImage renewableClicked;
+
+PImage fossilNotClicked;
+PImage fossilClicked;
+
+PImage offBackground; 
 Button renewableButton;
 Button fossilButton;
 Button resetButton;
-PImage testImage2;
+
 
 boolean rewnewableButtonPressed = false;
 boolean fossilButtonPressed = false;
@@ -12,8 +18,8 @@ boolean reset = false;
 
 int frame_rate = 10;
 
-int numOfFossilFrames = 6; //num of frames in the animation (num of scenes) for FOSSIL
-int numOfRenewableFrames = 12; 
+int numOfFossilFrames = 2; //num of frames in the animation (num of scenes) for FOSSIL
+int numOfRenewableFrames = 2; 
 int currentFrame = 0;
 FossilBackground fossilBackground;
 RenewableBackground renewableBackground;
@@ -21,12 +27,18 @@ RenewableBackground renewableBackground;
 //PImage[] renewableBackgrounds = new PImage[2];
 
 void setup() {
+  
   size(1600, 800);
-  testImage = loadImage("Assets/test.png");
-  testImage2 = loadImage("Assets/test2.png");
-  renewableButton = new Button(200, 600, 100, 100, testImage, "renewableButton");
-  fossilButton = new Button(1400, 600, 100, 100, testImage2, "fossilButton");
-  resetButton = new Button(1000, 600, 100, 100, testImage2, "resetButton");
+  offBackground = loadImage("Assets/image0.png");
+  renewableNotClicked = loadImage("Assets/rbutton1.png");
+  renewableClicked = loadImage("Assets/rbutton2.png");
+  
+  fossilNotClicked = loadImage("Assets/fbutton1.png");
+  fossilClicked = loadImage("Assets/fbutton2.png");
+  
+  renewableButton = new Button(100, 400, 400, 400, renewableNotClicked, renewableClicked, "renewableButton");
+  fossilButton = new Button(1200, 400, 400, 400, fossilNotClicked, fossilClicked, "fossilButton");
+  //resetButton = new Button(1000, 600, 100, 100, renewableNotClicked,renewableClicked, "resetButton");
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
   
@@ -35,6 +47,9 @@ void setup() {
 
 
 void draw() {
+  background(0,0,200);
+  
+  image(offBackground, 0,0);
   renewableButton.update();
   renewableButton.render();
   fossilButton.update();

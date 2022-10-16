@@ -3,8 +3,8 @@ class Button {
   float yPos;
   float _width;
   float _height;
-  PImage image1;
-  PImage image2;
+  PImage notClickedImg;
+  PImage clickedImg;
   PImage mainImage;
   boolean pressed = false;
   boolean clicked = false;
@@ -13,12 +13,13 @@ class Button {
   String text;
 
 
-  Button(float x, float y, float w, float h, PImage i1, String txt) {
+  Button(float x, float y, float w, float h, PImage i1, PImage i2, String txt) {
     xPos = x;
     yPos = y;
     _width = w;
     _height = h;
-    image1 = i1;
+    notClickedImg = i2;
+    clickedImg = i1;
     mainImage = i1;
     text = txt;
   }
@@ -67,7 +68,6 @@ class Button {
   //doesn't work rn
   /*
   void hover() {
-
     if (overButton) {
       mainImage = image2;
       println("TRUE");
