@@ -5,11 +5,13 @@ class Button {
   float _height;
   PImage notClickedImg;
   PImage clickedImg;
-  PImage mainImage;
+  //PImage mainImage;
   boolean pressed = false;
   boolean clicked = false;
   boolean overButton = false;
-  
+
+  boolean held = false;
+
   String text;
 
 
@@ -18,9 +20,9 @@ class Button {
     yPos = y;
     _width = w;
     _height = h;
-    notClickedImg = i2;
-    clickedImg = i1;
-    mainImage = i1;
+    notClickedImg = i1;
+    clickedImg = i2;
+    //mainImage = i2;
     text = txt;
   }
 
@@ -32,6 +34,7 @@ class Button {
       // has to be pressed in the dimensions of the buttons
       // positions to be worked out
       if (mouseX >= xPos && mouseX <= xPos + _width && mouseY >= yPos && mouseY <= yPos + _height) {
+        //image(notClickedImg, xPos, yPos, _width, _height);
         //pressed = true;
         clicked = true;
       } else {
@@ -43,8 +46,15 @@ class Button {
 
   //render button to show up on screen
   void render() {
-    //imageMode(CENTER);
-    image(mainImage, xPos, yPos, _width, _height); //(image file name, x coordinate, y coordinate, width, height)
+    if (isClicked()) {
+      image(clickedImg, xPos, yPos, _width, _height);
+    } else {
+      image(notClickedImg, xPos, yPos, _width, _height); //(image file name, x coordinate, y coordinate, width, height)
+    }
+  }
+  
+  void buttonNotClickedRender(){
+    image(notClickedImg, xPos, yPos, _width, _height);
   }
 
   boolean isClicked() { // use in the if statemenets to check if if the button is has been clicked returns boolean
@@ -59,21 +69,8 @@ class Button {
       return false;
     }
   }
-  
-  void display(){
 
-  
+  void display() {
   }
-  
-  //doesn't work rn
-  /*
-  void hover() {
-    if (overButton) {
-      mainImage = image2;
-      println("TRUE");
-    } else {
-      mainImage = image1;
-    }
-  }
-  */
+
 }

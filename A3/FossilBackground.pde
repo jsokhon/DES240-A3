@@ -32,13 +32,15 @@ class FossilBackground {
 
 
 
-
+    // load all images
     for (int i = 0; i < numOfFrames; i++) {
-      //println("image" + i);
-      backgrounds[i] = loadImage("Assets/image" + nf(i) + ".png");
+      println("image" + i);
+      backgrounds[i] = loadImage("Assets/renewablebg" + nf(i) + ".png");
     }
+    
+    
   }
-  /////
+
 
 
 
@@ -73,16 +75,6 @@ class FossilBackground {
         offset+=2;
       }
 
-
-
-      //for (int i = 0; i < 2; i++) {
-      //println(i);
-      //image(backgrounds[i], posX[0], 0);
-      //image(backgrounds[i], posX[0], 0);
-      //size(400, 400);
-      //fill(255,0,0);
-      //rect(120, 80, 220, 220);
-      //}
     }
   }
 }
