@@ -11,13 +11,16 @@ PImage offBackground;
 PImage onBackground;
 PImage sky1;
 PImage sky2;
+<<<<<<< HEAD
 PImage wire1;
 PImage wire2;
 int count = 0;
+=======
 PImage start;
 
 int startX =0;
 int startY = 0;
+>>>>>>> 5480c0c7d27935bd0c77532f1b7769cb1fb6ac54
 
 Button renewableButton;
 Button fossilButton;
@@ -45,10 +48,13 @@ void setup() {
   renewableSound = new SoundFile(this, "Music/forest.wav");
   sky1 = loadImage("Assets/sky1.png");
   sky2 = loadImage("Assets/sky2.png");
+<<<<<<< HEAD
   wire1 = loadImage("Assets/wire1.png");
   wire2 = loadImage("Assets/wire2.png");
   
+=======
 
+>>>>>>> 5480c0c7d27935bd0c77532f1b7769cb1fb6ac54
   offBackground = loadImage("Assets/image0.png");
   renewableNotClicked = loadImage("Assets/rbutton1.png");
   renewableClicked = loadImage("Assets/rbutton2.png");
@@ -75,9 +81,6 @@ void setup() {
 
 void draw() {
   background(83, 166, 220);
-  
-  
-  text(
 
   image(offBackground, 0, 0);
   image(start, startX, startY);
@@ -90,6 +93,7 @@ void draw() {
 
   if (mousePressed && renewableButton.isClicked()) {
     startX -= 150;
+    //println("R BUTTON CLICKED");
     image(onBackground, 0, 0);
     image(wire1, 0, 0);
 
@@ -97,7 +101,10 @@ void draw() {
     rewnewableButtonPressed = true;
     fossilButtonPressed = false;
   } else {
+    //startX = 0;
+
     playMusic = false;
+
     if (playMusic == false) {
       renewableSound.stop();
     }
@@ -110,15 +117,20 @@ void draw() {
 
 
   if (mousePressed && fossilButton.isClicked()) {
+<<<<<<< HEAD
     count += 1;
     println("F BUTTON CLICKED");
+=======
     startX += 150;
     playMusic = true;
+>>>>>>> 5480c0c7d27935bd0c77532f1b7769cb1fb6ac54
     image(onBackground, 0, 0);
     image(wire2, 0, 0);
     fossilBackground.display();
     fossilButtonPressed = true;
     rewnewableButtonPressed = false;
+
+    //println("PLAY");
   } else {
     //startX = 0;
     playMusic = false;
@@ -145,6 +157,7 @@ void draw() {
       }
       posX[i] -= 1;
     } else {
+      //startX = 0;
       posX[i] = 1600;
     }
   }
