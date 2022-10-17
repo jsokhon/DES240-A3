@@ -7,6 +7,8 @@ PImage renewableClicked;
 PImage fossilNotClicked;
 PImage fossilClicked;
 
+PImage resetImg;
+
 PImage offBackground;
 PImage onBackground;
 PImage sky1;
@@ -26,6 +28,7 @@ int startY = 0;
 
 Button renewableButton;
 Button fossilButton;
+Button resetButton;
 
 float posX[] = new float[2];
 
@@ -34,6 +37,8 @@ boolean fossilButtonPressed, setSmog = false;
 boolean rewnewableAfterfossil = false; // if renewable is pressed AFTER fossil then there is a message.
 
 boolean playMusic, reset = false;
+
+int resetCount = 0;
 
 int frame_rate = 10;
 
@@ -54,6 +59,7 @@ void setup() {
   smog = loadImage("Assets/smog.png");
   smogIslandOn = loadImage("Assets/SaveIsland2.png");
   smogIslandOff = loadImage("Assets/SaveIsland.png");
+  resetImg = loadImage("Assets/reset.png");
 
   offBackground = loadImage("Assets/image0.png");
   renewableNotClicked = loadImage("Assets/rbutton1.png");
@@ -66,6 +72,9 @@ void setup() {
 
   renewableButton = new Button(100, 500, 250, 250, renewableNotClicked, renewableClicked, attribute2);
   fossilButton = new Button(1150, 500, 250, 250, fossilNotClicked, fossilClicked, attribute1);
+  resetButton = new Button(700, 600, 150, 150, resetImg, resetImg, "");
+
+
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
 
@@ -79,8 +88,8 @@ void setup() {
 
 
 void draw() {
-  
-  //println(count);
+
+  println(count);
   background(83, 166, 220);
   if (count >= 60) {
     image(smog, 0, 0);
@@ -90,6 +99,10 @@ void draw() {
 
   if (count >= 60 && setSmog == true) {
     image(smogIslandOff, 0, 0);
+    if (renewableButton.isClicked() == false && fossilButton.isClicked() == false) {
+      resetButton.update();
+      resetButton.render();
+    }
   } else {
     image(offBackground, 0, 0);
   }
@@ -102,6 +115,12 @@ void draw() {
   fossilButton.render();
 
   // if renewableButton is clicked then showcase the proper array
+
+  if (mousePressed && resetButton.isClicked()) {
+    count = 0;
+    sky1 = loadImage("Assets/sky1.png");
+    sky2 = loadImage("Assets/sky2.png");
+  }
 
   if (mousePressed && renewableButton.isClicked()) {
     if (count < 60) {
@@ -129,13 +148,14 @@ void draw() {
       startX = 0;
       renewableButton.setClicked();
       renewableButton.buttonNotClickedRender();
+      resetButton.setClicked();
     }
   }
 
 
   if (mousePressed && fossilButton.isClicked()) {
-
-    count += 1;
+    println(count);
+    count ++;
 
     playMusic = true;
 
@@ -161,6 +181,7 @@ void draw() {
       }
       fossilButton.setClicked();
       fossilButton.buttonNotClickedRender();
+      resetButton.setClicked();
     }
   }
 
