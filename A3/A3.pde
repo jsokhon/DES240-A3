@@ -67,16 +67,6 @@ void draw() {
   fossilButton.update();
   fossilButton.render();
   
-  pushMatrix();
-  for (int i = 0; i < 2; i++) {
-    if (posX[i] > -1600) {
-      posX[i] -= 1;
-    } else {
-      posX[i] = 1600;
-    }
-  }
-  popMatrix();
-  
   // if renewableButton is clicked then showcase the proper array
 
   if (mousePressed && renewableButton.isClicked()) {
@@ -104,4 +94,17 @@ void draw() {
       fossilButton.buttonNotClickedRender();
     }
   }
+  
+  pushMatrix();
+  rotate(radians(-20));
+  image(sky1, posX[0], 0);
+  image(sky2, posX[1], 0);
+  for (int i = 0; i < 2; i++) {
+    if (posX[i] > -1600) {
+      posX[i] -= 1;
+    } else {
+      posX[i] = 1600;
+    }
+  }
+  popMatrix();
 }
