@@ -17,6 +17,8 @@ PImage smog;
 int count = 0;
 PImage start;
 
+String attribute1 = "Rhapsody Productions. (2018, December 25). Royalty Free Machines Sound Effects Pack. Youtube.";
+String attribute2= "BurghRecords. (2020, April 29). Free Sound Effects - Nature Sounds River and Birds (Royalty-free Sound Effects). Youtube.";
 int startX =0;
 int startY = 0;
 
@@ -58,8 +60,8 @@ void setup() {
   fossilNotClicked = loadImage("Assets/fbutton1.png");
   fossilClicked = loadImage("Assets/fbutton2.png");
 
-  renewableButton = new Button(100, 500, 250, 250, renewableNotClicked, renewableClicked, "renewableButton");
-  fossilButton = new Button(1150, 500, 250, 250, fossilNotClicked, fossilClicked, "fossilButton");
+  renewableButton = new Button(100, 500, 250, 250, renewableNotClicked, renewableClicked, attribute2);
+  fossilButton = new Button(1150, 500, 250, 250, fossilNotClicked, fossilClicked, attribute1);
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
 
@@ -78,8 +80,6 @@ void draw() {
     image(smog, 0, 0);
   }
 
-
-  //text()
 
   image(offBackground, 0, 0);
   image(start, startX, startY);

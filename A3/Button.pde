@@ -46,7 +46,10 @@ class Button {
 
   //render button to show up on screen
   void render() {
+    
     if (isClicked()) {
+      textSize(12);
+      text(text, 520, 780);
       image(clickedImg, xPos, yPos, _width, _height);
     } else {
       image(notClickedImg, xPos, yPos, _width, _height); //(image file name, x coordinate, y coordinate, width, height)
