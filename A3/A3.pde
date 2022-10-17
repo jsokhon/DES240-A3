@@ -95,9 +95,6 @@ void draw() {
   }
 
 
-
-
-  //image(offBackground, 0, 0);
   image(start, startX, startY);
   renewableButton.update();
   renewableButton.render();
@@ -116,7 +113,6 @@ void draw() {
     }
 
 
-    //image(onBackground, 0, 0);
     image(start, startX, startY);
     startX -= 150;
     image(wire1, 0, 0);
@@ -150,9 +146,6 @@ void draw() {
       image(smogIslandOn, 0, 0);
     }
 
-
-
-    //image(onBackground, 0, 0);
     image(start, startX, startY);
     startX += 150;
     image(wire2, 0, 0);
@@ -160,11 +153,9 @@ void draw() {
     fossilButtonPressed = true;
     rewnewableButtonPressed = false;
   } else {
-    //startX = 0;
     playMusic = false;
     if (fossilButtonPressed) {
       startX = 0;
-      //println(industrialSound.isPlaying());
       if (playMusic == false) {
         industrialSound.stop();
       }
