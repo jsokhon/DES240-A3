@@ -13,9 +13,6 @@ class RenewableBackground {
 
   int offset = 0;
 
-  //PImage image0;
-  //PImage image1;
-
   RenewableBackground(int frameNum) {
 
     imageCount = frameNum;
@@ -26,9 +23,8 @@ class RenewableBackground {
     posX[1] = 1000;
 
 
- 
+
     for (int i = 0; i < numOfFrames; i++) {
-      //println("image" + i);
       backgrounds[i] = loadImage("Assets/renewablebg" + nf(i) + ".png");
     }
   }

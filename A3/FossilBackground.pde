@@ -26,7 +26,6 @@ class FossilBackground {
 
     // load all images
     for (int i = 0; i < numOfFrames; i++) {
-      //println("image" + i);
       backgrounds[i] = loadImage("Assets/frame" + nf(i) + ".png");
     }
   }
