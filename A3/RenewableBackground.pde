@@ -42,7 +42,7 @@ class RenewableBackground {
 
 
 
-  // if some boolean is true, then play an animation for x seconds
+  // if some boolean is true, then play an animation for x secondss
 
   void display() {
     if (renewableButton.isClicked()) {
