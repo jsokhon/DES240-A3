@@ -13,6 +13,9 @@ PImage sky1;
 PImage sky2;
 PImage start;
 
+int startX =0;
+int startY = 0;
+
 Button renewableButton;
 Button fossilButton;
 Button resetButton;
@@ -68,6 +71,7 @@ void draw() {
   background(83, 166, 220);
 
   image(offBackground, 0, 0);
+  image(start, startX, startY);
   renewableButton.update();
   renewableButton.render();
   fossilButton.update();
@@ -76,12 +80,15 @@ void draw() {
   // if renewableButton is clicked then showcase the proper array
 
   if (mousePressed && renewableButton.isClicked()) {
+    startX -= 150;
     //println("R BUTTON CLICKED");
     image(onBackground, 0, 0);
 
     renewableBackground.display();
     rewnewableButtonPressed = true;
+    fossilButtonPressed = false;
   } else {
+    //startX = 0;
 
     playMusic = false;
 
@@ -89,27 +96,27 @@ void draw() {
       renewableSound.stop();
     }
     if (rewnewableButtonPressed) {
+      startX = 0;
       renewableButton.setClicked();
       renewableButton.buttonNotClickedRender();
     }
   }
 
 
-
-
   if (mousePressed && fossilButton.isClicked()) {
-    println("in here");
+    startX += 150;
     playMusic = true;
     image(onBackground, 0, 0);
     fossilBackground.display();
     fossilButtonPressed = true;
+    rewnewableButtonPressed = false;
 
     //println("PLAY");
   } else {
+    //startX = 0;
     playMusic = false;
     if (fossilButtonPressed) {
-
-
+      startX = 0;
       //println(industrialSound.isPlaying());
       if (playMusic == false) {
         industrialSound.stop();
@@ -127,11 +134,17 @@ void draw() {
     if (posX[i] > -1600) {
       posX[i] -= 1;
     } else {
+      //startX = 0;
       posX[i] = 1600;
     }
   }
   popMatrix();
+
+
+ 
 }
+
+
 
 
 
