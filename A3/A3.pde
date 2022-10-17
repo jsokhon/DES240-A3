@@ -21,7 +21,6 @@ int startY = 0;
 
 Button renewableButton;
 Button fossilButton;
-Button resetButton;
 
 float posX[] = new float[2];
 
@@ -60,7 +59,6 @@ void setup() {
 
   renewableButton = new Button(100, 500, 250, 250, renewableNotClicked, renewableClicked, "renewableButton");
   fossilButton = new Button(1150, 500, 250, 250, fossilNotClicked, fossilClicked, "fossilButton");
-  //resetButton = new Button(1000, 600, 100, 100, renewableNotClicked,renewableClicked, "resetButton");
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
 
@@ -155,8 +153,6 @@ void draw() {
   }
   popMatrix();
 }
-
-
 
 
 
