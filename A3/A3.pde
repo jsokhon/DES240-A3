@@ -1,6 +1,6 @@
 import processing.sound.*;
 
-SoundFile industrialSound;
+SoundFile industrialSound, renewableSound;
 PImage renewableNotClicked;
 PImage renewableClicked;
 
@@ -32,11 +32,11 @@ int numOfRenewableFrames = 2;
 int currentFrame = 0;
 FossilBackground fossilBackground;
 RenewableBackground renewableBackground;
-//PImage[] fossilBackgrounds = new PImage[2];
-//PImage[] renewableBackgrounds = new PImage[2];
 
 void setup() {
   size(1600, 800);
+  industrialSound = new SoundFile(this, "Music/factory.wav");
+  renewableSound = new SoundFile(this, "Music/forest.wav");
   sky1 = loadImage("Assets/sky1.png");
   sky2 = loadImage("Assets/sky2.png");
 
@@ -55,7 +55,7 @@ void setup() {
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
 
-  industrialSound = new SoundFile(this, "Music/factory.wav");
+
 
   frameRate(frame_rate);
 
@@ -90,33 +90,24 @@ void draw() {
     renewableBackground.display();
     rewnewableButtonPressed = true;
   } else {
+    
+    playMusic = false;
+    
+    if (playMusic == false) {
+        renewableSound.stop();
+      }
     if (rewnewableButtonPressed) {
       renewableButton.setClicked();
       renewableButton.buttonNotClickedRender();
     }
   }
 
-  if (playMusic){
-    print("SOUND");
-    industrialSound.amp(0.2);
-    industrialSound.play();
-  }else{
-    println("here");
-    println();
-    industrialSound.stop();
-    println(industrialSound.isPlaying());
-  }
-  
+
 
 
   if (mousePressed && fossilButton.isClicked()) {
     println("in here");
-    //println(playMusic);
     playMusic = true;
-
-
-    //industrialSound.pause();
-    //println("F BUTTON CLICKED");
     image(onBackground, 0, 0);
     fossilBackground.display();
     fossilButtonPressed = true;
@@ -125,8 +116,8 @@ void draw() {
   } else {
     playMusic = false;
     if (fossilButtonPressed) {
-      
-      
+
+
       //println(industrialSound.isPlaying());
       if (playMusic == false) {
         industrialSound.stop();
@@ -151,4 +142,27 @@ void draw() {
     }
   }
   popMatrix();
+}
+
+
+
+
+void mousePressed() {
+
+  if (mouseX >= fossilButton.xPos && mouseX <= fossilButton.xPos + fossilButton._width && mouseY >= fossilButton.yPos && mouseY <= fossilButton.yPos + fossilButton._height) {
+    if (renewableSound.isPlaying()) {
+      renewableSound.stop();
+    }
+
+    industrialSound.play();
+    //println("IN RANGE");
+  } else {
+    industrialSound.stop();
+  }
+
+  if (mouseX >= renewableButton.xPos && mouseX <= renewableButton.xPos + renewableButton._width && mouseY >= renewableButton.yPos && mouseY <= renewableButton.yPos + renewableButton._height) {
+    renewableSound.play();
+  } else {
+    renewableSound.stop();
+  }
 }
