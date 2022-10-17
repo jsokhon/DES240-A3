@@ -13,6 +13,7 @@ PImage sky1;
 PImage sky2;
 PImage wire1;
 PImage wire2;
+PImage smog;
 int count = 0;
 PImage start;
 
@@ -47,7 +48,7 @@ void setup() {
   sky2 = loadImage("Assets/sky2.png");
   wire1 = loadImage("Assets/wire1.png");
   wire2 = loadImage("Assets/wire2.png");
-
+  smog = loadImage("Assets/smog.png");
 
   offBackground = loadImage("Assets/image0.png");
   renewableNotClicked = loadImage("Assets/rbutton1.png");
@@ -75,6 +76,9 @@ void setup() {
 
 void draw() {
   background(83, 166, 220);
+  if (count > 70) {
+    image(smog, 0, 0);
+  }
 
 
   //text()
@@ -148,7 +152,7 @@ void draw() {
         sky1 = loadImage("Assets/SaveClouds.png");
         sky2 = loadImage("Assets/SaveClouds2.png");
       }
-      posX[i] -= 1;
+      posX[i] -= 2;
     } else {
       posX[i] = 1600;
     }
