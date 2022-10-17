@@ -8,6 +8,9 @@ PImage offBackground;
 PImage onBackground;
 PImage sky1;
 PImage sky2;
+PImage wire1;
+PImage wire2;
+int count = 0;
 
 Button renewableButton;
 Button fossilButton;
@@ -23,8 +26,8 @@ boolean reset = false;
 
 int frame_rate = 10;
 
-int numOfFossilFrames = 2; //num of frames in the animation (num of scenes) for FOSSIL
-int numOfRenewableFrames = 2;
+int numOfFossilFrames = 3; //num of frames in the animation (num of scenes) for FOSSIL
+int numOfRenewableFrames = 3;
 int currentFrame = 0;
 FossilBackground fossilBackground;
 RenewableBackground renewableBackground;
@@ -35,6 +38,8 @@ void setup() {
   size(1600, 800);
   sky1 = loadImage("Assets/sky1.png");
   sky2 = loadImage("Assets/sky2.png");
+  wire1 = loadImage("Assets/wire1.png");
+  wire2 = loadImage("Assets/wire2.png");
   
   offBackground = loadImage("Assets/image0.png");
   renewableNotClicked = loadImage("Assets/rbutton1.png");
@@ -46,7 +51,7 @@ void setup() {
   fossilClicked = loadImage("Assets/fbutton2.png");
 
   renewableButton = new Button(100, 500, 250, 250, renewableNotClicked, renewableClicked, "renewableButton");
-  fossilButton = new Button(1250, 500, 250, 250, fossilNotClicked, fossilClicked, "fossilButton");
+  fossilButton = new Button(1150, 500, 250, 250, fossilNotClicked, fossilClicked, "fossilButton");
   //resetButton = new Button(1000, 600, 100, 100, renewableNotClicked,renewableClicked, "resetButton");
   fossilBackground = new FossilBackground(numOfFossilFrames);
   renewableBackground = new RenewableBackground(numOfRenewableFrames);
@@ -72,6 +77,7 @@ void draw() {
   if (mousePressed && renewableButton.isClicked()) {
     println("R BUTTON CLICKED");
     image(onBackground, 0, 0);
+    image(wire1, 0, 0);
 
     renewableBackground.display();
     rewnewableButtonPressed = true;
@@ -83,8 +89,10 @@ void draw() {
   }
 
   if (mousePressed && fossilButton.isClicked()) {
+    count += 1;
     println("F BUTTON CLICKED");
     image(onBackground, 0, 0);
+    image(wire2, 0, 0);
     fossilBackground.display();
     fossilButtonPressed = true;
   } else {
@@ -101,6 +109,10 @@ void draw() {
   image(sky2, posX[1], 0);
   for (int i = 0; i < 2; i++) {
     if (posX[i] > -1600) {
+      if (count > 70) {
+        sky1 = loadImage("Assets/SaveClouds.png");
+        sky2 = loadImage("Assets/SaveClouds2.png");
+      }
       posX[i] -= 1;
     } else {
       posX[i] = 1600;
