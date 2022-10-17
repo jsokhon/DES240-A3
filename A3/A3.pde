@@ -77,7 +77,7 @@ void draw() {
   background(83, 166, 220);
   
   
-  text(
+  //text()
 
   image(offBackground, 0, 0);
   image(start, startX, startY);
