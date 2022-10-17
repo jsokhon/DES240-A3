@@ -47,7 +47,7 @@ void setup() {
   sky2 = loadImage("Assets/sky2.png");
   wire1 = loadImage("Assets/wire1.png");
   wire2 = loadImage("Assets/wire2.png");
-  
+
 
   offBackground = loadImage("Assets/image0.png");
   renewableNotClicked = loadImage("Assets/rbutton1.png");
@@ -75,8 +75,8 @@ void setup() {
 
 void draw() {
   background(83, 166, 220);
-  
-  
+
+
   //text()
 
   image(offBackground, 0, 0);
@@ -89,8 +89,10 @@ void draw() {
   // if renewableButton is clicked then showcase the proper array
 
   if (mousePressed && renewableButton.isClicked()) {
-    startX -= 150;
+
     image(onBackground, 0, 0);
+    image(start, startX, startY);
+    startX -= 150;
     image(wire1, 0, 0);
 
     renewableBackground.display();
@@ -110,11 +112,14 @@ void draw() {
 
 
   if (mousePressed && fossilButton.isClicked()) {
+
     count += 1;
-    println("F BUTTON CLICKED");
-    startX += 150;
+
     playMusic = true;
+
     image(onBackground, 0, 0);
+    image(start, startX, startY);
+    startX += 150;
     image(wire2, 0, 0);
     fossilBackground.display();
     fossilButtonPressed = true;
@@ -149,9 +154,6 @@ void draw() {
     }
   }
   popMatrix();
-
-
- 
 }
 
 
@@ -166,7 +168,7 @@ void mousePressed() {
     if (renewableSound.isPlaying()) {
       renewableSound.stop();
     }
-
+    industrialSound.amp(0.3);
     industrialSound.play();
   } else {
     industrialSound.stop();
