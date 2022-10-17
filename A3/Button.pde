@@ -35,12 +35,7 @@ class Button {
   void update() {
     if (mousePressed == true && pressed == false) {
       pressed = true;
-      //println(text, "Pressed");
-      // has to be pressed in the dimensions of the buttons
-      // positions to be worked out
       if (mouseX >= xPos && mouseX <= xPos + _width && mouseY >= yPos && mouseY <= yPos + _height) {
-        //image(notClickedImg, xPos, yPos, _width, _height);
-        //pressed = true;
         clicked = true;
       } else {
         clicked = false;

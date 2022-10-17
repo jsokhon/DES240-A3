@@ -69,6 +69,9 @@ void setup() {
 
 void draw() {
   background(83, 166, 220);
+  
+  
+  text(
 
   image(offBackground, 0, 0);
   image(start, startX, startY);
@@ -81,17 +84,13 @@ void draw() {
 
   if (mousePressed && renewableButton.isClicked()) {
     startX -= 150;
-    //println("R BUTTON CLICKED");
     image(onBackground, 0, 0);
 
     renewableBackground.display();
     rewnewableButtonPressed = true;
     fossilButtonPressed = false;
   } else {
-    //startX = 0;
-
     playMusic = false;
-
     if (playMusic == false) {
       renewableSound.stop();
     }
@@ -110,8 +109,6 @@ void draw() {
     fossilBackground.display();
     fossilButtonPressed = true;
     rewnewableButtonPressed = false;
-
-    //println("PLAY");
   } else {
     //startX = 0;
     playMusic = false;
@@ -134,7 +131,6 @@ void draw() {
     if (posX[i] > -1600) {
       posX[i] -= 1;
     } else {
-      //startX = 0;
       posX[i] = 1600;
     }
   }
