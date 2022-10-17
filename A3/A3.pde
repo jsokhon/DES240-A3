@@ -89,7 +89,7 @@ void setup() {
 
 void draw() {
 
-  println(count);
+  //println(count);
   background(83, 166, 220);
   if (count >= 60) {
     image(smog, 0, 0);
