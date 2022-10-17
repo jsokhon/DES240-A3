@@ -14,6 +14,8 @@ PImage sky2;
 PImage wire1;
 PImage wire2;
 PImage smog;
+PImage smogIslandOn;
+PImage smogIslandOff;
 int count = 0;
 PImage start;
 
@@ -28,7 +30,7 @@ Button fossilButton;
 float posX[] = new float[2];
 
 boolean rewnewableButtonPressed = false;
-boolean fossilButtonPressed = false;
+boolean fossilButtonPressed, setSmog = false;
 boolean rewnewableAfterfossil = false; // if renewable is pressed AFTER fossil then there is a message.
 
 boolean playMusic, reset = false;
@@ -50,6 +52,8 @@ void setup() {
   wire1 = loadImage("Assets/wire1.png");
   wire2 = loadImage("Assets/wire2.png");
   smog = loadImage("Assets/smog.png");
+  smogIslandOn = loadImage("Assets/SaveIsland2.png");
+  smogIslandOff = loadImage("Assets/SaveIsland.png");
 
   offBackground = loadImage("Assets/image0.png");
   renewableNotClicked = loadImage("Assets/rbutton1.png");
@@ -75,13 +79,25 @@ void setup() {
 
 
 void draw() {
+  
+  println(count);
   background(83, 166, 220);
-  if (count > 70) {
+  if (count >= 60) {
     image(smog, 0, 0);
+    image(smogIslandOn, 0, 0);
+    setSmog = true;
+  }
+
+  if (count >= 60 && setSmog == true) {
+    image(smogIslandOff, 0, 0);
+  } else {
+    image(offBackground, 0, 0);
   }
 
 
-  image(offBackground, 0, 0);
+
+
+  //image(offBackground, 0, 0);
   image(start, startX, startY);
   renewableButton.update();
   renewableButton.render();
@@ -91,8 +107,16 @@ void draw() {
   // if renewableButton is clicked then showcase the proper array
 
   if (mousePressed && renewableButton.isClicked()) {
+    if (count < 60) {
+      image(onBackground, 0, 0);
+    }
 
-    image(onBackground, 0, 0);
+    if (count >= 60) {
+      image(smogIslandOn, 0, 0);
+    }
+
+
+    //image(onBackground, 0, 0);
     image(start, startX, startY);
     startX -= 150;
     image(wire1, 0, 0);
@@ -119,7 +143,16 @@ void draw() {
 
     playMusic = true;
 
-    image(onBackground, 0, 0);
+    if (count < 60) {
+      image(onBackground, 0, 0);
+    }
+    if (count >= 60) {
+      image(smogIslandOn, 0, 0);
+    }
+
+
+
+    //image(onBackground, 0, 0);
     image(start, startX, startY);
     startX += 150;
     image(wire2, 0, 0);
@@ -146,7 +179,7 @@ void draw() {
   image(sky2, posX[1], 0);
   for (int i = 0; i < 2; i++) {
     if (posX[i] > -1600) {
-      if (count > 70) {
+      if (count > 60) {
         sky1 = loadImage("Assets/SaveClouds.png");
         sky2 = loadImage("Assets/SaveClouds2.png");
       }
