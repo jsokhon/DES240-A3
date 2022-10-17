@@ -67,15 +67,7 @@ void setup() {
 void draw() {
   background(83, 166, 220);
 
-  //text("word", 40, 120);
-
   image(offBackground, 0, 0);
-
-
-  //image(start, 0,0);
-
-  //textSize(120);
-  //text("Choose your source", 300, height/2);
   renewableButton.update();
   renewableButton.render();
   fossilButton.update();
@@ -90,12 +82,12 @@ void draw() {
     renewableBackground.display();
     rewnewableButtonPressed = true;
   } else {
-    
+
     playMusic = false;
-    
+
     if (playMusic == false) {
-        renewableSound.stop();
-      }
+      renewableSound.stop();
+    }
     if (rewnewableButtonPressed) {
       renewableButton.setClicked();
       renewableButton.buttonNotClickedRender();
@@ -124,9 +116,6 @@ void draw() {
       }
       fossilButton.setClicked();
       fossilButton.buttonNotClickedRender();
-      //playMusic=false;
-      //println("STOPS");
-      //industrialSound.pause();
     }
   }
 
@@ -150,17 +139,18 @@ void draw() {
 void mousePressed() {
 
   if (mouseX >= fossilButton.xPos && mouseX <= fossilButton.xPos + fossilButton._width && mouseY >= fossilButton.yPos && mouseY <= fossilButton.yPos + fossilButton._height) {
+    playMusic = true;
     if (renewableSound.isPlaying()) {
       renewableSound.stop();
     }
 
     industrialSound.play();
-    //println("IN RANGE");
   } else {
     industrialSound.stop();
   }
 
   if (mouseX >= renewableButton.xPos && mouseX <= renewableButton.xPos + renewableButton._width && mouseY >= renewableButton.yPos && mouseY <= renewableButton.yPos + renewableButton._height) {
+    playMusic = true;
     renewableSound.play();
   } else {
     renewableSound.stop();
